@@ -88,8 +88,10 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  sums = numberList.reduce((a, b) => a + b, 0);
-  //return 
+  sum = numberList.reduce(function(a, b) {
+    return a + b;
+  }, 0);
+  return callback(sum)
 }
 
 /**
@@ -134,8 +136,9 @@ function processProduct(num1, num2, callback) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
+function processContains(item, list, callback) {
+  
+  return callback(list.includes(item))
 }
 
 /**
@@ -179,8 +182,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  names = []
+  runners.forEach(function(items){
+    return names.push(`${items.last_name}, ${items.first_name}`);
+  });
+  return names;
 }
 
 /**
@@ -216,7 +223,10 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  //sizes = runners.filter(tShirtSize => )
+  const shirtOrder = []
+  runners.filter(function(runners){
+    return shirtOrder.push(`${items.last_name}, ${items.tShirtSize}`);
+  });
 }
 
 /**
@@ -229,8 +239,11 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  total = runners.reduce(function(a, b) {
+    return a + b.donation;
+  }, 0);
+  return total
 }
 
 /////////////// CLOSURES ///////////////
@@ -253,6 +266,7 @@ function counterMaker() {
   // BROKEN CODE STARTS
   const count = 0;
   const counter = function() {
+    count = 0
     count++
   }
   // BROKEN CODE ENDS
